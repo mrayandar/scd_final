@@ -1,0 +1,39 @@
+version: '3'
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3010:3000"
+    depends_on:
+      - menu-services
+      - order-services
+
+  menu-services:
+    build: ./menu-services
+    ports:
+      - "3011:3000"
+
+  order-services:
+    build: ./order-services
+    ports:
+      - "3012:3000"
+
+  inventory-services:
+    build: ./inventory-services
+    ports:
+      - "3013:3000"
+
+  customer-services:
+    build: ./customer-services
+    ports:
+      - "3014:3000"
+
+  payment-services:
+    build: ./payment-services
+    ports:
+      - "3015:3000"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
